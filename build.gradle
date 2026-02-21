@@ -1,0 +1,13 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// Корневой файл сборки [citation:1][citation:6]
+
+plugins {
+    // Плагин для Android приложений (применяется только в модулях)
+    id 'com.android.application' version '8.2.0' apply false
+    // Плагин для Android библиотек
+    id 'com.android.library' version '8.2.0' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
