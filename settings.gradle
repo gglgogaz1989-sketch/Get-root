@@ -1,0 +1,19 @@
+// Настройки проекта - какие модули включать [citation:7][citation:8]
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()           // Репозиторий Google [citation:8]
+        mavenCentral()     // Центральный репозиторий Maven
+    }
+}
+
+rootProject.name = "Root24h"
+include ':app'             // Включаем модуль app [citation:3]
