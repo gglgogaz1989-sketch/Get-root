@@ -1,0 +1,68 @@
+// Плагин для сборки Android приложения [citation:1][citation:5]
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    // Версия SDK для компиляции [citation:1][citation:7]
+    compileSdk 34
+
+    defaultConfig {
+        // Уникальный ID приложения [citation:3]
+        applicationId "com.root24h.app"
+        
+        // Минимальная версия Android [citation:7]
+        minSdk 21
+        // Целевая версия Android
+        targetSdk 34
+        
+        // Внутренний номер версии (число) [citation:3][citation:5]
+        versionCode 1
+        // Название версии для пользователей [citation:3]
+        versionName "2.0"
+    }
+
+    buildTypes {
+        release {
+            // Включаем сжатие кода (ProGuard/R8) [citation:5]
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
+    }
+
+    // Настройки для split APK (если нужно) [citation:4]
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+            universalApk true
+        }
+    }
+
+    // Компиляция с Java 8
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+// ЗАВИСИМОСТИ - что нужно для сборки [citation:1][citation:8]
+dependencies {
+    // Основные библиотеки Android
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    
+    // Для работы с разрешениями (Root нужны права)
+    implementation 'com.github.getActivity:XXPermissions:18.6'
+    
+    // Тестирование
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
